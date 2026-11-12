@@ -1,28 +1,20 @@
 package no.hvl.dat100.javel.oppgave1;
 
-import no.hvl.dat100.javel.oppgave2.MonthlyPower;
-
 public class DayMain {
 
     public static void main(String[] args) {
+        double[] usage = DayPowerData.powerusage_day;
+        double[] prices = DayPowerData.powerprices_day;
 
-        // test data
-        double[] powerusage_day = DayPowerData.powerusage_day;
-
-        double[] powerprices_day = DayPowerData.powerprices_day;
-
-        System.out.println("==============");
         System.out.println("OPPGAVE 1");
-        System.out.println("==============");
-        System.out.println();
+        DailyPower.printPowerPrices(prices);
+        DailyPower.printPowerUsage(usage);
 
-        /*
-        TODO
-
-         Write code that tests the methods you implement in the DailyPower class
-         Remember to teste the methods as you implement them
-         Remember to also to check that you get the expected results
-         */
-
+        System.out.printf("Total usage: %.2f kWh%n", DailyPower.computePowerUsage(usage));
+        System.out.printf("Spot price: %.2f NOK%n", DailyPower.computeSpotPrice(usage, prices));
+        System.out.printf("Power support: %.2f NOK%n", DailyPower.computePowerSupport(usage, prices));
+        System.out.printf("Norgespris: %.2f NOK%n", DailyPower.computeNorgesPrice(usage));
+        System.out.printf("Peak usage: %.2f kWh%n", DailyPower.findPeakUsage(usage));
+        System.out.printf("Average hourly usage: %.2f kWh%n", DailyPower.findAvgPower(usage));
     }
 }
